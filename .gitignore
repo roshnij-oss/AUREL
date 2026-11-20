@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+data/aurel.db
+data/blocklist.txt
+data/train.csv
+data/test.csv
+.pytest_cache/

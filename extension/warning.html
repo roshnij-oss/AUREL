@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>AUREL warning</title><style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#090b0f;color:#e8ebf0;font:15px/1.55 system-ui,sans-serif}
+.box{max-width:560px;padding:30px;border:1px solid #ff4d4f;border-radius:14px;background:#10141b}.brand{display:flex;gap:10px;align-items:center;margin-bottom:14px}.brand img{height:34px}
+.brand b{font:600 16px Cinzel,Georgia,serif;letter-spacing:.2em;color:#d6dce6}h1{margin:0 0 8px;font-size:1.25rem;color:#ff4d4f}
+#u{word-break:break-all;color:#8993a4;font:12px ui-monospace,monospace}li{color:#c9cfdb;margin:3px 0}.note{color:#8993a4;font-size:13px}
+button{padding:11px 18px;border-radius:8px;border:0;font-weight:600;cursor:pointer;margin:8px 8px 0 0;background:#2a56e0;color:#fff}button.g{background:none;border:1px solid #232a36;color:#9aa4b5}</style>
+<div class="box"><div class="brand"><img src="logo.svg" alt=""><b>AUREL</b></div><h1>High-confidence threat detected</h1><p>AUREL stopped this page before you interacted with it:</p><p id="u"></p><ul id="why"></ul>
+<button id="back">Return to safety</button><button class="g" id="more">View full report</button><button class="g" id="fp">Report false positive</button><button class="g" id="go">Proceed anyway</button>
+<p class="note">Risk assessments are not guarantees. The page may already have started loading before this warning appeared.</p></div>
+<script src="common.js"></script><script src="warning.js"></script>

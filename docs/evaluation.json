@@ -1,0 +1,27 @@
+{
+ "dataset": "data/sample_labelled.csv",
+ "rules_only": {
+  "n": 76,
+  "skipped_invalid": 0,
+  "tp": 38,
+  "fp": 0,
+  "tn": 36,
+  "fn": 2,
+  "precision": 1.0,
+  "recall": 0.95,
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 0.05
+ },
+ "full_engine": {
+  "n": 76,
+  "skipped_invalid": 0,
+  "tp": 39,
+  "fp": 0,
+  "tn": 36,
+  "fn": 1,
+  "precision": 1.0,
+  "recall": 0.975,
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 0.025
+ }
+}

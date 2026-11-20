@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><style>
+:root{--bg:#090b0f;--panel:#10141b;--line:#232a36;--text:#e8ebf0;--mute:#8993a4;--royal:#2a56e0;--gold:#c9a24a}
+body{width:340px;margin:0;padding:14px;font:13px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--text)}
+.brand{display:flex;gap:8px;align-items:center;margin-bottom:12px}.brand img{height:30px}.brand b{font:600 15px Cinzel,Georgia,serif;letter-spacing:.2em;color:#d6dce6}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-weight:600;border:1px solid}.low{color:#6f9bff}.medium{color:#f5c542}.high{color:#ff4d4f}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}#u{color:var(--mute);word-break:break-all;font-size:12px;margin:6px 0}
+ul{padding-left:18px;margin:6px 0}li{color:#c9cfdb}.note{color:var(--mute);font-size:12px}
+input[type=text]{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+button{margin-top:8px;width:100%;padding:8px;border:0;border-radius:8px;background:var(--royal);color:#fff;font-weight:600;cursor:pointer}button.ghost{background:none;border:1px solid var(--line);color:var(--text)}
+label{display:flex;gap:8px;margin-top:9px;font-size:12px;color:var(--mute)}hr{border:0;border-top:1px solid var(--line);margin:12px 0}
+</style><div class="brand"><img src="logo.svg" alt=""><b>AUREL</b></div><div class="card" id="out">Checking…</div>
+<button class="ghost" id="full">View details</button><hr><input type="text" id="m" placeholder="Paste a link to scan"><button id="go">Scan link</button>
+<label><input type="checkbox" id="en"> Monitor pages automatically</label>
+<label><input type="checkbox" id="on"> Online checks (sends domain to rdap.org; URL to threat services if keys are set)</label>
+<p class="note">Browser-level protection only. Requires the browser to be open and AUREL running locally. Only URLs are analysed.</p>
+<script src="common.js"></script><script src="popup.js"></script>

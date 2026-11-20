@@ -1,0 +1,178 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AUREL</title><link rel="icon" href="/static/emblem.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Cinzel:wght@600&display=swap">
+<style>
+:root{--bg:#090b0f;--panel:#10141b;--panel2:#171c25;--line:#232a36;--text:#e8ebf0;--silver:#c3cad6;--mute:#8993a4;--royal:#2a56e0;--gold:#c9a24a;--low:#6f9bff;--yellow:#f5c542;--red:#ff4d4f}
+*{box-sizing:border-box}html,body{margin:0}body{font:14px/1.5 Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:grid;grid-template-columns:224px 1fr}
+.low{color:var(--low)}.medium,.caution{color:var(--yellow)}.high,.danger{color:var(--red)}.info{color:var(--low)}.sr{position:absolute;left:-9999px}
+.lock{display:flex;align-items:center;gap:.25em;font-size:var(--fs,15px)}.lock .emb{height:2.3em;width:2.17em;overflow:visible;flex:none}
+.wm{font:600 1.15em Cinzel,'Times New Roman',serif;letter-spacing:.2em;background:linear-gradient(#fff,#aab3c1 60%,#d9dfe8);-webkit-background-clip:text;background-clip:text;color:transparent}
+aside{border-right:1px solid var(--line);padding:20px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px;background:#0c0f14}
+#brand{padding:2px 10px 22px;visibility:hidden;--fs:15px}
+nav button{display:flex;gap:12px;align-items:center;width:100%;padding:10px 12px;border-radius:8px;border:0;background:none;color:var(--mute);font:500 14px Inter;cursor:pointer;text-align:left}
+nav button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+nav button:hover{color:var(--text);background:var(--panel)}nav button.on{color:#fff;background:var(--panel2);box-shadow:inset 2px 0 var(--gold)}
+.foot{margin-top:auto;color:var(--mute);font-size:12px;padding:8px 10px}.foot button{background:none;border:1px solid var(--line);color:var(--mute);border-radius:6px;padding:4px 8px;font:12px Inter;cursor:pointer;margin-top:8px}
+main{padding:30px 4vw 70px;max-width:1000px;width:100%}h1{font-size:1.3rem;font-weight:600;margin:0 0 6px}.sub{color:var(--mute);margin:0 0 18px;max-width:64ch}
+form,.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}input[type=text],select{padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:15px Inter}input[type=text]{flex:1;min-width:220px}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--royal);outline-offset:1px}
+.btn{padding:11px 22px;border-radius:8px;border:0;background:var(--royal);color:#fff;font:600 14px Inter;cursor:pointer;transition:filter .15s}.btn:hover{filter:brightness(1.15)}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--text)}.btn.ghost:hover{border-color:var(--silver)}.btn.sm{padding:7px 13px;font-size:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:16px}.card h3{margin:0 0 10px;font-size:.95rem;font-weight:600;color:var(--silver)}
+.hidden{display:none!important}.err{color:var(--red);margin-top:10px}.note{color:var(--mute);font-size:13px}.mono{font-family:'JetBrains Mono',monospace;font-size:12px}
+.opt{display:flex;gap:8px;color:var(--mute);font-size:13px;margin-top:12px;max-width:68ch}
+textarea{width:100%;min-height:110px;padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:13px 'JetBrains Mono',monospace;margin-bottom:10px}
+.stage{display:flex;gap:10px;align-items:center;padding:5px 0;color:var(--mute)}.stage.done{color:var(--text)}.stage.run{color:var(--low)}
+.dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--line);flex:none}.done .dot{background:var(--royal);border-color:var(--royal)}.run .dot{border-color:var(--low);border-top-color:transparent;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}.prog{height:3px;background:var(--line);border-radius:3px;margin:10px 0;overflow:hidden}.prog i{display:block;height:100%;background:var(--royal);transition:width .25s}
+.head{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.gauge{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;flex:none}.gauge b{width:74px;height:74px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font:600 1.5rem 'JetBrains Mono',monospace}
+.pill{display:inline-block;padding:3px 11px;border-radius:99px;font-weight:600;font-size:13px;border:1px solid currentColor}.url{word-break:break-all;color:var(--mute);font-size:13px;margin-top:6px}
+.banner{border:1px solid var(--yellow);background:rgba(245,197,66,.06);border-radius:10px;padding:11px 14px;margin-top:16px}
+.chk{display:grid;grid-template-columns:20px 1fr;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line)}.chk:last-child{border:0}.chk span{color:var(--mute);font-size:13px;grid-column:2}
+.f{padding:2px 0 2px 12px;margin:11px 0;border-left:3px solid currentColor}.f b{display:block;color:var(--text)}.f span{color:var(--mute);font-size:13px}.f em{float:right;font-style:normal;color:var(--mute);font-size:12px}.f code{display:block;margin-top:3px;color:var(--silver);font:12px 'JetBrains Mono',monospace;word-break:break-all}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:14px}.meta div{background:var(--panel2);border-radius:8px;padding:9px 11px;font-size:13px;word-break:break-all}.meta small{display:block;color:var(--mute)}
+.bar{display:grid;grid-template-columns:140px 1fr 40px;gap:10px;align-items:center;margin:7px 0;font-size:13px}.bar i{display:block;height:7px;border-radius:5px}.bar em{font-style:normal;color:var(--mute);text-align:right}
+table{width:100%;border-collapse:collapse}td,th{padding:9px 6px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}th{color:var(--mute);font-weight:500}td a{color:var(--low);cursor:pointer}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}.tile b{font:600 1.8rem 'JetBrains Mono',monospace;display:block}.tile small{color:var(--mute)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.donut{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;margin:6px auto}.donut i{width:78px;height:78px;border-radius:50%;background:var(--panel)}
+.col{display:flex;gap:7px;align-items:end;height:96px}.col div{flex:1;text-align:center;font-size:11px;color:var(--mute)}.col i{display:block;background:var(--royal);border-radius:4px 4px 0 0;margin-bottom:4px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}video{width:100%;max-width:420px;border-radius:10px;border:1px solid var(--line);margin-top:10px}
+.printhead{display:none}.fade{animation:fade .4s both}@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+/* opening animation */
+#splash{position:fixed;inset:0;background:var(--bg);z-index:50;display:grid;place-items:center;transition:background .8s}#splash.out{background:transparent;pointer-events:none}
+#sl{--fs:46px;transform-origin:0 0}#sz{transform-origin:center}#sl .wm i{font-style:normal;opacity:0}
+.shard{transform-box:fill-box;transform-origin:center}
+@keyframes pull{from{transform:var(--t);opacity:.5}to{transform:none;opacity:1}}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes gone{to{opacity:0}}
+@keyframes letter{from{opacity:0;transform:translateX(-10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+body.go .shard{animation:pull 1s cubic-bezier(.65,0,.25,1) both;animation-delay:calc(1.5s + var(--i)*.07s)}
+body.go .reveal{animation:draw 1.2s ease-in-out .5s both}body.go .sweep{animation:draw 1.2s ease-in-out .5s both,gone .4s 1.9s both}
+body.go #sl .wm i{animation:letter .5s both;animation-delay:calc(2.9s + var(--n)*.2s)}
+@media(max-width:760px){body{grid-template-columns:1fr}aside{position:fixed;bottom:0;left:0;right:0;top:auto;height:auto;flex-direction:row;padding:6px;z-index:10;border:0;border-top:1px solid var(--line)}#brand,.foot{display:none}nav{display:flex;width:100%}nav button{flex-direction:column;gap:2px;font-size:11px;padding:7px 2px;text-align:center}.two{grid-template-columns:1fr}.bar{grid-template-columns:100px 1fr 34px}main{padding-bottom:90px}}
+@media print{body{display:block;background:#fff;color:#000}aside,form,.actions,.opt,#scan,#qr,#bulk,#dash,#hist,#splash,.nopr{display:none!important}.printhead{display:flex!important;gap:12px;align-items:center;border-bottom:2px solid #1d3fb8;padding-bottom:10px}.card{background:#fff;border-color:#aaa;break-inside:avoid}.gauge b{background:#fff}.meta div{background:#f1f1f1}.sub,.url,.note,.f span,.chk span,.meta small,.f code{color:#333}.f b,.chk b{color:#000}.low,.info{color:#1d3fb8}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><!--EMBLEM-DEFS--><linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4573f5"/><stop offset=".45" stop-color="#1d3fb8"/><stop offset="1" stop-color="#0a1a56"/></linearGradient>
+<linearGradient id="gRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#a7b0c0"/><stop offset=".55" stop-color="#eef1f6"/><stop offset="1" stop-color="#747e90"/></linearGradient>
+<linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#c6cedb"/><stop offset=".62" stop-color="#8b95a7"/><stop offset="1" stop-color="#e3e8ef"/></linearGradient>
+<linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dc9a"/><stop offset=".5" stop-color="#c9a24a"/><stop offset="1" stop-color="#8a6a22"/></linearGradient>
+<linearGradient id="gSheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="gGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fc0ff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#7aa2ff"/></linearGradient>
+<filter id="fShadow" x="-20%" y="-10%" width="140%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity=".55"/></filter>
+<filter id="fGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<g id="shieldArt"><path d="M100 16 L172 38 V112 C172 158 142 190 100 206 C58 190 28 158 28 112 V38 Z" fill="url(#gBlue)" stroke="url(#gRim)" stroke-width="5" stroke-linejoin="round"/><path d="M100 28 L160 46 V112 C160 150 135 177 100 192 C65 177 40 150 40 112 V46 Z" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.4"/><path d="M100 36 L152 52 V112 C152 144 130 168 100 181 C70 168 48 144 48 112 V52 Z" fill="none" stroke="url(#gGold)" stroke-width="1.2" opacity=".85"/><path d="M100 16 L172 38 V112 C172 158 142 190 100 206 C58 190 28 158 28 112 V38 Z" fill="url(#gSheen)"/></g>
+<g id="aArt" filter="url(#fShadow)"><path fill-rule="evenodd" d="M30 202 L100 4 L170 202 L142 202 L125.7 156 L74.3 156 L58 202 Z M100 83 L82 134 L118 134 Z" fill="url(#gA)" stroke="#080a0e" stroke-width="1.2" stroke-linejoin="round"/><polygon points="82,134 118,134 125.7,156 74.3,156" fill="url(#gGold)"/><path d="M31.5 199 L100 8" stroke="#fff" stroke-opacity=".7" stroke-width="1.3" fill="none"/></g>
+<clipPath id="cp1"><polygon points="0,120 0,0 60,0 100,100"/></clipPath><clipPath id="cp2"><polygon points="100,100 60,0 200,0 200,40"/></clipPath><clipPath id="cp3"><polygon points="100,100 200,40 200,170"/></clipPath><clipPath id="cp4"><polygon points="100,100 200,170 200,230 30,230"/></clipPath><clipPath id="cp5"><polygon points="100,100 30,230 0,230 0,120"/></clipPath>
+<mask id="mA" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="212"><path class="reveal" d="M30 202 L100 4 L170 202 M74 145 H126" pathLength="1" stroke="#fff" stroke-width="50" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1"/></mask>
+<symbol id="emblem" viewBox="0 0 200 212"><use href="#shieldArt"/><use href="#aArt"/></symbol><!--/EMBLEM-DEFS--></defs></svg>
+<div id="splash" aria-label="AUREL"><div id="sz"><div id="sl" class="lock">
+<svg class="emb" viewBox="0 0 200 212" aria-hidden="true">
+<g class="shard" style="--t:translate(-26px,-18px) rotate(-12deg);--i:0" clip-path="url(#cp1)"><use href="#shieldArt"/></g>
+<g class="shard" style="--t:translate(4px,-30px) rotate(6deg);--i:1" clip-path="url(#cp2)"><use href="#shieldArt"/></g>
+<g class="shard" style="--t:translate(28px,-6px) rotate(10deg);--i:2" clip-path="url(#cp3)"><use href="#shieldArt"/></g>
+<g class="shard" style="--t:translate(20px,30px) rotate(-8deg);--i:3" clip-path="url(#cp4)"><use href="#shieldArt"/></g>
+<g class="shard" style="--t:translate(-22px,26px) rotate(12deg);--i:4" clip-path="url(#cp5)"><use href="#shieldArt"/></g>
+<g mask="url(#mA)"><use href="#aArt"/></g>
+<path class="sweep" d="M30 202 L100 4 L170 202 M74 145 H126" pathLength="1" stroke="url(#gGlow)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1" filter="url(#fGlow)"/></svg>
+<span class="wm" aria-hidden="true"><i style="--n:0">U</i><i style="--n:1">R</i><i style="--n:2">E</i><i style="--n:3">L</i></span></div></div></div>
+<aside><div id="brand" class="lock" aria-label="AUREL"><svg class="emb" aria-hidden="true"><use href="#emblem"/></svg><span class="wm" aria-hidden="true">UREL</span></div>
+<nav><button data-v="scan"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg>Scan</button>
+<button data-v="qr"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v7h-4M14 21h.01"/></svg>QR Scan</button>
+<button data-v="bulk"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Bulk</button>
+<button data-v="dash"><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Dashboard</button>
+<button data-v="hist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>History</button></nav>
+<div class="foot">Browser-level protection only. AUREL cannot guard other apps or your network.<br><button id="mot" onclick="toggleMotion()"></button></div></aside>
+<main>
+<section id="scan" class="hidden"><h1>Scan a link</h1><p class="sub">AUREL analyses the address itself and never visits it. Every verdict lists the checks behind it, including the ones that could not run.</p>
+<form id="f"><input type="text" id="u" placeholder="https://example.com/login" autocomplete="off" aria-label="URL to scan" maxlength="2048" required><button class="btn">Scan</button></form>
+<label class="opt"><input type="checkbox" id="on"><span>Online checks (optional). Sends the registered domain to rdap.org for its age. If you configured API keys, the full URL also goes to Google Safe Browsing and/or URLhaus. Shortened links are resolved by contacting the shortener only. Off by default; otherwise nothing leaves this machine.</span></label>
+<div id="err" class="err"></div><div id="busy" class="card hidden"><div class="lock" style="--fs:11px"><svg class="emb" aria-hidden="true"><use href="#emblem"/></svg><span class="note" style="margin-left:8px">Analysing</span></div><div class="prog"><i id="pb"></i></div><div id="stg"></div></div></section>
+<section id="qr" class="hidden"><h1>QR Scan</h1><p class="sub">The link inside a QR code is extracted and analysed. AUREL never opens it for you. Camera access needs your permission; uploading an image works without it.</p>
+<div class="tabs"><button class="btn sm" onclick="camStop()" id="tu">Upload image</button><button class="btn sm ghost" onclick="camStart()" id="tc">Use camera</button></div>
+<input type="file" id="qf" accept="image/*"><video id="cam" class="hidden" playsinline muted></video><canvas id="cv" class="hidden"></canvas><div id="qe" class="err"></div></section>
+<section id="bulk" class="hidden"><h1>Bulk scan</h1><p class="sub">Paste up to 50 URLs, one per line, or load a .txt or .csv file.</p>
+<textarea id="bl" placeholder="https://example.com&#10;http://185.4.9.2/login"></textarea><div class="row"><input type="file" id="bf" accept=".txt,.csv"><button class="btn" onclick="runBulk()">Scan list</button><button class="btn ghost" onclick="csv()">Export CSV</button></div><div id="bt"></div></section>
+<section id="dash" class="hidden"><h1>Dashboard</h1><div id="dd"></div></section>
+<section id="hist" class="hidden"><h1>Scan history</h1><div class="row" style="margin-bottom:10px"><input type="text" id="hq" placeholder="Search URLs"><select id="hv"><option value="">All verdicts</option><option value="high">High Risk</option><option value="medium">Suspicious</option><option value="low">Low Risk</option></select></div>
+<div class="card" style="margin-top:0"><table id="ht"></table><p><button class="btn ghost sm" onclick="clearHist()">Clear history</button></p></div></section>
+<section id="res"></section></main>
+<script>
+const $=id=>document.getElementById(id),C={low:'#6f9bff',medium:'#f5c542',high:'#ff4d4f'},SEV={info:'#6f9bff',caution:'#f5c542',danger:'#ff4d4f'};
+const STAGES=['URL validation','URL structure','Hostname & homograph','Brand impersonation','Domain reputation','Redirect analysis','Threat intelligence','ML model','Risk engine'];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const online=()=>$('on').checked,VIEWS=['scan','qr','bulk','dash','hist'];let BULK=[],H=[];
+const reduce=()=>localStorage.getItem('aurel.motion')==='off'||matchMedia('(prefers-reduced-motion:reduce)').matches;
+function toggleMotion(){localStorage.setItem('aurel.motion',reduce()?'on':'off');motLabel()}function motLabel(){$('mot').textContent='Opening animation: '+(reduce()?'off':'on')}motLabel();
+function show(v){camStop();VIEWS.forEach(x=>$(x).classList.toggle('hidden',x!==v));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+ $('res').classList.toggle('hidden',!['scan','qr'].includes(v));if(v==='hist')loadHist();if(v==='dash')loadDash();$(v).classList.add('fade')}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{$('res').innerHTML='';show(b.dataset.v)});
+const bars=r=>r.map(x=>`<div class="bar"><span>${esc(x.l)}</span><i style="width:${x.w}%;background:${x.c}"></i><em>${x.t}</em></div>`).join('');
+const post=(p,b)=>fetch(p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});
+function run(url,qr){
+ $('err').textContent='';$('res').innerHTML='';$('busy').classList.remove('hidden');let done=0;
+ const draw=()=>{$('stg').innerHTML=STAGES.map((s,i)=>`<div class="stage ${i<done?'done':i===done?'run':''}"><span class="dot"></span>${s}</div>`).join('');$('pb').style.width=done/STAGES.length*100+'%'};draw();
+ const es=new EventSource('/api/scan/stream?url='+encodeURIComponent(url)+'&online='+online());
+ es.addEventListener('stage',()=>{done=Math.min(done+1,STAGES.length);draw()});
+ es.addEventListener('result',e=>{es.close();$('busy').classList.add('hidden');const d=JSON.parse(e.data);if(d.valid){if(qr)d.qr_text=qr;render(d,qr?'qr':'scan')}else $(qr?'qe':'err').textContent=d.error});
+ es.onerror=()=>{es.close();$('busy').classList.add('hidden');$('err').textContent='Could not reach the AUREL service. Is python run.py running?'}}
+const ICON={passed:'<span class="low">✓</span>',flagged:'<span class="medium">!</span>',not_run:'<span style="color:var(--mute)">–</span>'};
+function render(d,view='scan'){
+ show(view);const age=d.domain_age_days,cf=d.confidence;
+ const ml=d.ml&&d.ml.contributions.length?`<div class="card"><h3>Machine-learning signal</h3><p class="note">Estimated ${Math.round(d.ml.probability*100)}% phishing likelihood; rule score ${d.rule_score}. The model can raise the final score, never lower it. Red pushes toward phishing, blue away.</p>${bars(d.ml.contributions.map(c=>({l:c.label,w:Math.min(Math.abs(c.value)*30,100),c:c.value>0?C.high:C.low,t:(c.value>0?'+':'')+c.value.toFixed(1)})))}</div>`:'';
+ $('res').innerHTML=`<div class="printhead"><svg style="height:46px;width:44px"><use href="#emblem"/></svg><div><b>AUREL Security Report</b><br><span class="note">Generated ${new Date().toLocaleString()} · scan #${d.id??'-'}</span></div></div>
+ <div class="card fade"><div class="head"><div class="gauge" style="background:conic-gradient(${C[d.level]} ${d.score*3.6}deg,#232a36 0)"><b>${d.score}</b></div>
+ <div><span class="pill ${d.level}">${d.verdict}</span> <span class="note">Confidence: ${esc(cf.level)}</span><div class="url">${esc(d.url)}</div>${d.qr_text?'<div class="url">Extracted from a QR code. Not opened.</div>':''}${d.normalised?'<div class="url">No scheme given; analysed as http://</div>':''}
+ <div class="note" style="margin-top:6px">${esc(cf.reason)} ${esc(d.verdict_note)}</div></div></div>
+ <div class="meta"><div><small>Hostname</small>${esc(d.hostname)}</div><div><small>Registered domain</small>${esc(d.registered_domain)}</div><div><small>Subdomain</small>${esc(d.subdomain||'none')}</div><div><small>TLD</small>${esc(d.tld||'n/a')}</div><div><small>HTTPS</small>${d.https?'Yes (not proof of legitimacy)':'No'}</div><div><small>Domain age</small>${age!=null?age+' days':'Not available'}</div></div></div>
+ ${d.incomplete.length?`<div class="banner"><b class="medium">${d.incomplete.length} check(s) could not be completed:</b> ${d.incomplete.map(esc).join(', ')}. This verdict reflects only the checks that ran.</div>`:''}
+ <div class="card"><h3>Reasoning panel</h3>${d.checks.map(c=>`<div class="chk"><div>${ICON[c.status]}</div><b>${esc(c.name)}</b><span>${esc(c.detail)}</span></div>`).join('')}${d.by_design.map(c=>`<div class="chk"><div style="color:var(--mute)">○</div><b>${esc(c.name)}</b><span>Not performed by design. ${esc(c.detail)}</span></div>`).join('')}</div>
+ <div class="card"><h3>Findings</h3>${d.findings.length?d.findings.map(f=>`<div class="f ${f.severity}"><em>${esc(f.layer)} · impact ${f.impact}</em><b>${esc(f.indicator)}</b><span>${esc(f.explanation)}</span>${f.evidence?`<code>${esc(f.evidence)}</code>`:''}</div>`).join(''):'<p class="note">No suspicious indicators were found by the checks that ran.</p>'}<p class="note">Related indicators are grouped so they are not counted repeatedly; impact shows each one's counted contribution.</p></div>${ml}
+ <div class="card"><h3>Recommended next steps</h3><ul style="margin:0;padding-left:20px;line-height:1.7">${d.recommendations.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>
+ <p class="note">This is a risk assessment, not a guarantee. A low score does not prove a website is safe.</p>
+ <div class="row actions"><button class="btn ghost sm" onclick="window.print()">Export PDF</button><button class="btn ghost sm" onclick="fb('false_positive')">Report false positive</button><button class="btn ghost sm" onclick="fb('missed_threat')">Report missed threat</button>${view==='qr'?`<button class="btn sm ${d.level==='high'?'ghost':''}" onclick="openDest()">Open destination</button>`:''}</div><div id="fbm" class="note"></div></div><div id="cmp"></div>`;
+ window._cur=d;compare(d)}
+async function fb(kind){const d=window._cur;await post('/api/feedback',{url:d.url,scan_id:d.id,kind});$('fbm').textContent='Saved locally. It stays on your machine.'}
+function openDest(){const d=window._cur;if(!confirm((d.level==='high'?'This link is rated HIGH RISK. ':'')+'Open '+d.url+' in a new tab?'))return;window.open(d.url,'_blank','noopener,noreferrer')}
+async function compare(d){const h=(await (await fetch('/api/history?domain='+encodeURIComponent(d.registered_domain)+'&limit=6')).json()).filter(x=>x.id!==d.id);if(!h.length)return;
+ $('cmp').innerHTML=`<div class="card nopr"><h3>Earlier scans of ${esc(d.registered_domain)}</h3><table><tr><th>When</th><th>Verdict</th><th>Score</th><th>Change</th></tr>${h.map(x=>{const dl=d.score-x.score;return `<tr><td>${x.ts.replace('T',' ')}</td><td class="${x.level}">${x.result.verdict}</td><td>${x.score}</td><td>${dl===0?'same':(dl>0?'+':'')+dl+' now'}</td></tr>`}).join('')}</table></div>`}
+async function runBulk(){const urls=$('bl').value.split('\n').map(x=>x.trim()).filter(Boolean);if(!urls.length)return;$('bt').innerHTML='<p class="note">Scanning…</p>';
+ const r=await post('/api/bulk',{urls,online:online()});BULK=await r.json();if(!r.ok){$('bt').innerHTML=`<p class="err">${esc(BULK.error)}</p>`;return}
+ $('bt').innerHTML=`<div class="card"><table><tr><th>Verdict</th><th>Score</th><th>URL</th><th>Top finding</th><th></th></tr>${BULK.map((r,i)=>r.valid?`<tr><td class="${r.level}">${r.verdict}</td><td>${r.score}</td><td>${esc(r.url.slice(0,46))}</td><td>${esc(r.findings[0]?r.findings[0].indicator:'None')}</td><td><a onclick="render(BULK[${i}],'scan')">Report</a></td></tr>`:`<tr><td colspan="5" class="err">${esc(r.input)}: ${esc(r.error)}</td></tr>`).join('')}</table></div>`}
+$('bf').onchange=async e=>{const t=await e.target.files[0].text();$('bl').value=t.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(l=>l&&l.toLowerCase()!=='url').slice(0,50).join('\n')};
+function csv(){const q=s=>'"'+String(s).replace(/"/g,'""').replace(/^([=+\-@])/,"'$1")+'"';const rows=[['url','verdict','score','top_findings'],...BULK.filter(r=>r.valid).map(r=>[r.url,r.verdict,r.score,r.findings.slice(0,3).map(f=>f.indicator).join('; ')])];
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.map(q).join(',')).join('\n')],{type:'text/csv'}));a.download='aurel-bulk-scan.csv';a.click()}
+let stream,timer,busyQ=false;
+async function sendQR(blob,quiet){const fd=new FormData();fd.append('image',blob,'qr.jpg');fd.append('online',online());const r=await fetch('/api/qr',{method:'POST',body:fd}),d=await r.json();
+ if(r.ok){render(d,'qr');return true}if(quiet&&r.status===400&&!d.qr_text)return false;$('qe').textContent=d.error+(d.qr_text?' Decoded text (not opened): '+d.qr_text:'');return !quiet||r.status===501||!!d.qr_text}
+$('qf').onchange=e=>{$('qe').textContent='';$('res').innerHTML='';sendQR(e.target.files[0],false)};
+async function camStart(){$('qe').textContent='';$('res').innerHTML='';
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}})}catch{$('qe').textContent='Camera unavailable or permission denied. You can upload an image instead.';return}
+ const v=$('cam');v.srcObject=stream;v.classList.remove('hidden');v.play();$('tc').classList.remove('ghost');$('tu').classList.add('ghost');
+ const bd='BarcodeDetector' in window?new BarcodeDetector({formats:['qr_code']}):null;   // on-device decoding when supported
+ timer=setInterval(async()=>{if(busyQ||!v.videoWidth)return;busyQ=true;try{
+  if(bd){const f=await bd.detect(v);if(f.length){camStop();const t=f[0].rawValue;/^https?:\/\//i.test(t)?run(t,t):$('qe').textContent='This QR code holds data that is not a web link (not opened): '+t.slice(0,120);}}
+  else{const c=$('cv');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.85));if(await sendQR(b,true))camStop()}}catch{}busyQ=false},900)}
+function camStop(){clearInterval(timer);if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('cam').classList.add('hidden');$('tu').classList.remove('ghost');$('tc').classList.add('ghost')}
+async function loadDash(){const s=await (await fetch('/api/stats')).json();if(!s.total){$('dd').innerHTML='<div class="card">No scans yet. Scan a link and your statistics appear here.</div>';return}
+ const L=s.levels,t=s.total,p1=L.low/t*100,p2=p1+L.medium/t*100,mx=Math.max(1,...Object.values(s.per_day)),tm=Math.max(1,...s.top_indicators.map(i=>i[1]));
+ $('dd').innerHTML=`<div class="tiles"><div class="tile"><b>${t}</b><small>Total scans</small></div><div class="tile"><b class="high">${L.high}</b><small>High Risk</small></div><div class="tile"><b class="medium">${L.medium}</b><small>Suspicious</small></div><div class="tile"><b class="low">${L.low}</b><small>Low Risk</small></div><div class="tile"><b>${s.avg_score}</b><small>Average score</small></div></div>
+ <div class="two"><div class="card"><h3>Risk distribution</h3><div class="donut" style="background:conic-gradient(${C.low} 0 ${p1}%,${C.medium} ${p1}% ${p2}%,${C.high} ${p2}% 100%)"><i></i></div></div><div class="card"><h3>Scans, last 7 days</h3><div class="col">${Object.entries(s.per_day).map(([k,v])=>`<div><i style="height:${v/mx*68}px"></i>${k.slice(5)}</div>`).join('')}</div></div></div>
+ <div class="two"><div class="card"><h3>Recent activity</h3><table>${s.recent.map(r=>`<tr><td class="${r.level}">${{low:'Low',medium:'Suspicious',high:'High'}[r.level]}</td><td>${esc(r.url.slice(0,32))}</td><td class="note">${esc(r.source)}</td></tr>`).join('')}</table></div><div class="card"><h3>Most common indicators</h3>${bars(s.top_indicators.map(i=>({l:i[0],w:i[1]/tm*100,c:C.low,t:i[1]})))}<p class="note">${s.feedback} feedback report(s) saved locally. The extension stores only flagged pages.</p></div></div>`}
+let ht;async function loadHist(){const q=new URLSearchParams({q:$('hq').value,verdict:$('hv').value});H=await (await fetch('/api/history?'+q)).json();
+ $('ht').innerHTML=H.length?'<tr><th>Verdict</th><th>Score</th><th>URL</th><th>Scanned</th><th></th></tr>'+H.map((r,i)=>`<tr><td class="${r.level}">${r.result.verdict}</td><td>${r.score}</td><td>${esc(r.url.slice(0,48))}</td><td>${r.ts.replace('T',' ')}</td><td><a onclick="render(H[${i}].result,'scan')">Open report</a></td></tr>`).join(''):'<tr><td>No matching scans.</td></tr>'}
+$('hq').oninput=()=>{clearTimeout(ht);ht=setTimeout(loadHist,250)};$('hv').onchange=loadHist;
+async function clearHist(){if(confirm('Delete all local scan history?')){await fetch('/api/history',{method:'DELETE'});loadHist()}}
+$('f').onsubmit=e=>{e.preventDefault();run($('u').value.trim())};
+async function intro(){const q=new URLSearchParams(location.search).get('url'),sp=$('splash'),br=$('brand');
+ const finish=()=>{sp.remove();br.style.visibility='visible';if(q){show('scan');$('u').value=q;run(q)}else show('dash')};
+ if(q||sessionStorage.aurel||reduce())return finish();
+ sessionStorage.aurel=1;let skipped=false;const waits=[];const sleep=ms=>new Promise(r=>{if(skipped)return r();const t=setTimeout(r,ms);waits.push(()=>{clearTimeout(t);r()})});
+ const skip=()=>{skipped=true;waits.forEach(f=>f())};addEventListener('keydown',skip,{once:true});sp.addEventListener('click',skip,{once:true});
+ const lock=$('sl'),zoom=$('sz'),a=lock.getBoundingClientRect(),b=br.getBoundingClientRect();
+ document.body.classList.add('go');await sleep(4000);
+ if(!skipped){zoom.animate([{transform:'rotate(0) scale(1)'},{transform:'rotate(-4deg) scale(1.12)'}],{duration:700,easing:'ease-out',fill:'forwards'});await sleep(950)}
+ if(!skipped){sp.classList.add('out');const e='cubic-bezier(.6,0,.2,1)';
+  zoom.animate([{transform:'rotate(-4deg) scale(1.12)'},{transform:'none'}],{duration:900,easing:e,fill:'forwards'});
+  lock.animate([{transform:'none'},{transform:`translate(${b.left-a.left}px,${b.top-a.top}px) scale(${b.height/a.height})`}],{duration:900,easing:e,fill:'forwards'});await sleep(950)}
+ document.body.classList.remove('go');finish()}
+intro();
+</script></body></html>
